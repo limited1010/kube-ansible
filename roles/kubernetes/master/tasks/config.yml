@@ -39,3 +39,11 @@
   with_items:
     - kubectl
     - kubelet
+
+- name: Create Kubernetes Helm symlinks
+  file:
+    src: "{{ downloads.helm.dir }}/{{ item }}"
+    dest: "/usr/bin/{{ item }}"
+    state: link
+    force: yes
+  with_items: [ helm ]
